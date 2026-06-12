@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=69.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "clip-auto-labeler"
+version = "0.1.0"
+description = "Zero- and few-shot image labeling powered by CLIP."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+  { name = "Elias Dzobo" }
+]
+keywords = ["clip", "vision", "auto-labeling", "mlops"]
+dependencies = [
+  "torch>=2.2",
+  "open-clip-torch>=2.24",
+  "pillow>=10.0",
+  "numpy>=1.26",
+  "pandas>=2.2",
+  "tqdm>=4.66",
+  "typer>=0.12"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3",
+  "ruff>=0.6",
+  "mypy>=1.11"
+]
+
+[project.scripts]
+clip-label = "clip_auto_labeler.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+
